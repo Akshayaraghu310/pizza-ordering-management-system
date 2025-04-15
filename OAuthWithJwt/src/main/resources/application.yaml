@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: OAuthWith-jwt
+  server:
+    port:8071  # Port your app will run on
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 108820310069-6f08hnufvgm1jje8pt6gedukf8a5m7k9.apps.googleusercontent.com
+            client-secret: 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
+            scope: openid, profile, email  # Scopes you want to request (email and profile)
+            redirect-uri: http://localhost:8071/login/oauth2/code/google
+            authorization-grant-type: authorization_code  # This is the authorization code flow
+            client-name: Google
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth?access_type=offline&prompt=consent
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
